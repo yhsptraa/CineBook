@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,111 @@
     <link rel="stylesheet" href="assets/css/base/reset.css">
     <link rel="stylesheet" href="assets/css/base/root.css">
     <link rel="stylesheet" href="assets/css/pages/movies/movie-dashboard.css">
+    <script src="https://kit.fontawesome.com/baa7ec279b.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    
+    <!-- Dashboard Header Section -->
+    <header id="header-container">
+        <nav id="navbar-container">
+            <a class="logo" href="#">Cine<span class="logo-span">Book</span></a>
+            <div id="hamburger-menu-container">
+                <div id="close-button-container">
+                    <p class="logo">Cine<span class="logo-span">Book</span></p>
+                    <button id="close-button" type="button">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div id="menu-container">
+                    <a href="#" class="menu">NOW PLAYING</a>
+                    <a href="#" class="menu">COMING SOON</a>
+                    <a href="#" class="menu">CINEMAS</a>
+                </div>
+                <div id="search-container">
+                    <button id="search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" placeholder="Search" id="input-box">
+                </div>
+                <div id="auth-container">
+                    <a href="#">LOGIN</a>
+                    <a href="#">REGISTER</a>
+                </div>
+            </div>
+            <button id="hamburger-button" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Dashboard Main Section -->
+    <main id="main-container">
+        <section id="main-menu-container">
+            <button class="main-menu-button" type="button">
+                <i class="fa-solid fa-film"></i>
+            </button>
+            <button class="main-menu-button" type="button">
+                <i class="fa-solid fa-ticket"></i>
+            </button>
+            <button class="main-menu-button" type="button">
+                <i class="fa-solid fa-user"></i>
+            </button>
+        </section>
+        <section class="content-section">
+            <div class="section-heading">
+                <h2 id="trending-title">Trending</h2>
+            </div>
+            <div class="horizontal-list" id="trending-movie-list">
+
+            </div>
+        </section>
+        <section class="content-section">
+            <div class="section-heading">
+                <h2 id="now-playing-title">Now Playing</h2>
+            </div>
+            <div class="horizontal-list" id="now-playing-movie-list">
+
+            </div>
+        </section>
+        <section class="content-section">
+            <div class="section-heading">
+                <h2 id="coming-soon-title">Coming Soon</h2>
+            </div>
+            <div class="horizontal-list" id="coming-soon-movie-list">
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="footer-container">
+        <a class="logo" href="#">Cine<span class="logo-span">Book</span></a>
+        <div id="social-media-container">
+            <button id="instagram-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-instagram"></i>
+            </button>
+            <button id="tiktok-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-tiktok"></i>
+            </button>
+            <button id="youtube-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-youtube"></i>
+            </button>
+            <button id="twitter-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-x-twitter"></i>
+            </button>
+            <button id="facebook-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-facebook"></i>
+            </button>
+        </div>
+        <div id="footer-menu-container">
+            <a href="#">About Us</a>
+            <a href="#">FAQ</a>
+            <a href="#">Privacy Management</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p id="copyright">&copy; 2026 Cinebook</p>
+    </footer>
+    <script src="assets/js/data/movies-dummy.js"></script>
+    <script src="assets/js/pages/movies/movie-dashboard.js"></script>
 </body>
 </html>
