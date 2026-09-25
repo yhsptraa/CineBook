@@ -6,9 +6,11 @@
 
 html {
     font-size: 16px;
+    font-family: var(--font-dm-sans);
 }
 
 body {
+    background-color: var(--color-background);
     min-height: 100vh;
     min-width: 100vw;
 }
