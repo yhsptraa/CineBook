@@ -1,0 +1,126 @@
+#header-container {
+    background-color: var(--color-surface, #1e1e1e);
+    padding: 15px 30px;
+    border-bottom: 1px solid var(--color-border, #333);
+}
+
+#navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#main-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+}
+
+.schedule-section {
+    background-color: var(--color-surface, #1e1e1e);
+    border: 1px solid var(--color-border, #333);
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-text-primary, #ffffff);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.movie-summary-card {
+    display: flex;
+    gap: 15px;
+    background-color: #2a2a2a;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.movie-summary-card img {
+    width: 70px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.movie-info h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.movie-genre {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.movie-price {
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.button-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.opt-btn {
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.opt-btn:hover {
+    background-color: #383838;
+}
+
+.opt-btn.selected {
+    background-color: #e50914;
+    border-color: #e50914;
+    color: #fff;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-btn:disabled {
+    background-color: #444;
+    color: #888;
+    cursor: not-allowed;
+}
