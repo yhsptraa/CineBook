@@ -117,7 +117,6 @@
 #main-container {
     display: flex;
     flex-flow: column nowrap;
-
     min-height: 80vh;
     background-color: var(--color-background);
     padding-top: 2em;
@@ -126,16 +125,17 @@
 #main-menu-container {
     display: flex;
     flex-flow: row nowrap;
-    width: 100vw;
+    width: 70vw;
     align-items: center;
-    justify-content: space-evenly;
-    margin: 1em 0 2.25em;
+    justify-content: center;
+    gap: 2em;
+    margin: 1em auto 2.25em;
 }
 
 .main-menu-button {
     font-size: 2em;
-    padding: .2em;
-    border-radius: .25em;
+    padding: .25em;
+    border-radius: .5em;
     color: var(--color-primary);
     background-color: var(--color-primary-soft);
     border: 1px solid var(--color-primary);
@@ -144,6 +144,19 @@
 .main-menu-button:hover {
     color: var(--color-primary-hover);
     background-color: var(--color-primary-soft);
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6em;
+}
+
+.menu-description {
+    font-family: var(--font-dm-sans);
+    color: var(--color-text-primary);
+    font-size: .8em;
 }
 
 .content-section {
@@ -184,8 +197,9 @@
 
 /* Dashboard Movie Poster Styling */
 
+        
 .movie-card {
-    flex: 0 0 10em;
+    flex: 0 0 9.5em;
     scroll-snap-align: start;
 }
 
@@ -283,17 +297,81 @@ a:focus-visible {
     outline-offset: 3px;
 }
 
-@media (min-width:600px) {
 
+@media (min-width:600px) {
+    .movie-card {
+        flex: 0 0 12.5em;
+    }
 }
+
 
 @media (min-width:768px) {
+    #hamburger-menu-container {
+        transform: translateX(0);
+        visibility: visible;
+        transition: none;
+        opacity: 1;
+        pointer-events: auto;
+        width: auto;
+        left: auto;
+        right: 0;
+        top: auto;
+        flex-flow: row nowrap;
+        height: auto;
+        position: inherit;
+        padding: 0;
 
+    }
+
+    #close-button-container,
+    #hamburger-button {
+        display: none;
+    }
+
+    #menu-container,
+    #auth-container,
+    #search-container {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        font-size: .8em;
+    }
+
+    #search-container {
+        border: 1px solid black;
+        padding: .4em .6em .4em;
+        border-radius: 2em;
+        gap: .5em;
+    }
+
+    #search-container > button {
+        all: unset;
+    }
+
+    #search-container > input{
+        border: none;
+        outline: none;
+        width: 6em;
+    }
+
+    #menu-container > a,
+    #auth-container > a {
+        border: none;
+        padding: 0;
+        color: var(--color-primary);
+    }
+
+    .movie-card {
+        flex: 0 0 14em;
+    }
 }
+
 
 @media (min-width:1024px) {
 
 }
+
 
 @media (min-width:1536px) {
 
