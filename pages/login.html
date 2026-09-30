@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CineBook</title>
+    <link rel="stylesheet" href="../assets/css/pages/movies/auth.css">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="brand-title">CineBook</div>
+    <div class="brand-subtitle">Login to book your favorite movie tickets</div>
+
+    <div id="error-box" class="error-box" style="display: none;"></div>
+
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="btn-login">LOGIN</button>
+    </form>
+
+    <div class="switch-page">
+        Not a member? <a href="register.html">Sign Up</a>
+    </div>
+</div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const errorBox = document.getElementById('error-box');
+    errorBox.style.display = 'none';
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+        sessionStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('userNama', user.nama);
+        window.location.href = '../index.html'; // Kembali ke halaman utama
+    } else {
+        errorBox.innerText = "Email atau password salah.";
+        errorBox.style.display = 'block';
+    }
+});
+</script>
+</body>
+</html>
