@@ -129,5 +129,26 @@
     </footer>
     <script src="assets/js/data/movies-dummy.js"></script>
     <script src="assets/js/pages/movies/movie-dashboard.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    const userNama = sessionStorage.getItem('userNama');
+    const authContainer = document.getElementById('auth-container');
+
+    if (isLoggedIn === 'true' && userNama) {
+        authContainer.innerHTML = `
+            <span style="color: #00f0ff; font-weight: bold; margin-right: 15px; font-family: sans-serif;">HI, ${userNama.toUpperCase()}</span>
+            <a href="#" id="logout-btn" style="color: #ef4444; font-weight: bold; text-decoration: none;">LOGOUT</a>
+        `;
+        
+        document.getElementById('logout-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('userNama');
+            window.location.reload();
+        });
+    }
+});
+</script>
 </body>
 </html>
