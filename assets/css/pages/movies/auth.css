@@ -5,36 +5,39 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body {
-    background: linear-gradient(135deg, #0a0e17 0%, #161f30 100%);
-    color: #ffffff;
+    background-color: #ffffff; /* Latar belakang luar putih bersih agar sama dengan dashboard */
+    color: #111827;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 .login-container {
-    background-color: #111827;
+    background-color: #ffffff;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    /* Efek bayangan halus agar kotak form terlihat modern */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
     width: 100%;
     max-width: 400px;
-    border: 1px solid #1f2937;
+    border: 1px solid #f3f4f6;
 }
 .brand-title {
     text-align: center;
     font-size: 28px;
     font-weight: 700;
-    color: #00f0ff; 
+    color: #8b1e3f; /* Warna Merah Maroon/Burgundy khas aksen kelompok Anda */
     margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+}
+.brand-title span {
+    color: #111827;
 }
 .brand-subtitle {
     text-align: center;
-    color: #9ca3af;
+    color: #6b7280;
     font-size: 14px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
 }
 .form-group {
     margin-bottom: 20px;
@@ -42,29 +45,30 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #e5e7eb;
+    color: #374151;
     font-size: 14px;
+    font-weight: 500;
 }
 .form-group input {
     width: 100%;
     padding: 12px 16px;
-    background-color: #1f2937;
-    border: 1px solid #374151;
+    background-color: #f9fafb; /* Latar kotak input abu-abu terang */
+    border: 1px solid #e5e7eb;
     border-radius: 6px;
-    color: #ffffff;
+    color: #111827;
     font-size: 15px;
     transition: all 0.3s ease;
 }
 .form-group input:focus {
     outline: none;
-    border-color: #00f0ff;
-    box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+    border-color: #8b1e3f; /* Fokus border mengikuti aksen maroon */
+    box-shadow: 0 0 0 3px rgba(139, 30, 63, 0.1);
 }
 .btn-login {
     width: 100%;
     padding: 14px;
-    background-color: #00f0ff;
-    color: #0a0e17;
+    background-color: #111827; /* Tombol Hitam Tegas Premium */
+    color: #ffffff;
     border: none;
     border-radius: 6px;
     font-size: 16px;
@@ -72,16 +76,31 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 10px;
+    letter-spacing: 0.5px;
 }
 .btn-login:hover {
-    background-color: #00c8d6;
+    background-color: #1f2937;
 }
 .error-box {
-    background-color: rgba(239, 68, 68, 0.1);
+    background-color: rgba(239, 68, 68, 0.08);
     border: 1px solid #ef4444;
     color: #ef4444;
     padding: 12px;
     border-radius: 6px;
     margin-bottom: 20px;
     font-size: 14px;
+}
+.switch-page {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #6b7280;
+}
+.switch-page a {
+    color: #8b1e3f;
+    text-decoration: none;
+    font-weight: 600;
+}
+.switch-page a:hover {
+    text-decoration: underline;
 }
