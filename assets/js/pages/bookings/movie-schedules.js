@@ -9,43 +9,66 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("movie-poster").src = "../../../" + selectedMovie.poster.replace("../../../", "");
     }
 
-    const dates = ["1 Okt", "2 Okt", "3 Okt"];
-    const studios = ["Studio 1", "Studio 2", "Studio 3"];
-    const times = ["09:00", "13:00", "16:00", "19:00"];
+    const dates = ["4 Okt", "5 Okt", "6 Okt", "7 Okt"];
+
+    const showtimes = [
+        { time: "09:00", studio: "Studio 1" },
+        { time: "13:00", studio: "Studio 1" },
+        { time: "16:00", studio: "Studio 1" },
+        { time: "19:00", studio: "Studio 1" }
+    ];
+
     let selectedDate = "";
-    let selectedStudio = "";
-    let selectedTime = "";
+    let selectedTime = null;
     const btnNext = document.getElementById("next-button");
 
-    const renderOptions = (containerId, optionsList, onSelect) => {
-        const container = document.getElementById(containerId);
-        optionsList.forEach(item => {
+    const renderDates = () => {
+        const container = document.getElementById("date-list");
+        container.innerHTML = "";
+        dates.forEach(item => {
             const btn = document.createElement("button");
             btn.className = "opt-btn";
             btn.innerText = item;
             btn.onclick = () => {
                 container.querySelectorAll(".opt-btn").forEach(b => b.classList.remove("selected"));
                 btn.classList.add("selected");
-                onSelect(item);
-                if (selectedDate && selectedStudio && selectedTime) {
-                    btnNext.disabled = false;
-                }
+                selectedDate = item;
+                checkSelection();
             };
             container.appendChild(btn);
         });
     };
-
-    renderOptions("date-list", dates, val => selectedDate = val);
-    renderOptions("studio-list", studios, val => selectedStudio = val);
-    renderOptions("time-list", times, val => selectedTime = val);
+    const renderTimes = () => {
+        const container = document.getElementById("time-list");
+        container.innerHTML = "";
+        showtimes.forEach(item => {
+            const btn = document.createElement("button");
+            btn.className = "opt-btn";
+            btn.innerHTML = `${item.time} <br><small style="font-size: 0.7rem; color: #aaa;">${item.studio}</small>`;
+            btn.onclick = () => {
+                container.querySelectorAll(".opt-btn").forEach(b => b.classList.remove("selected"));
+                btn.classList.add("selected");
+                selectedTime = item;
+                checkSelection();
+            };
+            container.appendChild(btn);
+        });
+    };
+    const checkSelection = () => {
+        if (selectedDate && selectedTime) {
+            btnNext.disabled = false;
+        }
+    };
+    renderDates();
+    renderTimes();
     btnNext.onclick = () => {
         const bookingData = {
             movieTitle: selectedMovie.title,
             moviePrice: price,
             moviePoster: selectedMovie.poster,
             date: selectedDate,
-            studio: selectedStudio,
-            time: selectedTime
+            studio: selectedTime.studio, 
+            time: selectedTime.time
         };
         localStorage.setItem("cinebook_booking", JSON.stringify(bookingData));
         window.location.href = "movie-seats.html";
