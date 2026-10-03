@@ -21,7 +21,6 @@ function createMovieCard(movie, label) {
             <a href="pages/movies/movie-details.html?id=${movie.id}">
                 <div class="movie-poster-wrapper">
                     <img src="${movie.poster}" alt="Poster film ${movie.title}" class="movie-poster" loading="lazy">
-                    <span class="movie-label">${label}</span>
                 </div>
             </a>
 
@@ -31,7 +30,6 @@ function createMovieCard(movie, label) {
                 ${movie.format ? `<span>${movie.format}</span>` : ""}
                 ${movie.rating ? `<span>${movie.rating}</span>` : ""}
                 ${movie.duration ? `<span>${movie.duration}</span>` : ""}
-                ${movie.releaseDate ? `<span>${movie.releaseDate}</span>` : ""}
             </div>
         </article>
     `;
@@ -43,8 +41,8 @@ function renderMovies(containerId, movies, label) {
     container.innerHTML = movies.map((movie) => createMovieCard(movie, label)).join("");
 }
 
-renderMovies("#trending-movie-list", dashboardData.trending, "Sedang Trending");
+renderMovies("#trending-movie-list", movieData.trending, "Sedang Trending");
 
-renderMovies("#now-playing-movie-list", dashboardData.nowPlaying, "Sedang Tayang");
+renderMovies("#now-playing-movie-list", movieData.nowPlaying, "Sedang Tayang");
 
-renderMovies("#coming-soon-movie-list", dashboardData.comingSoon, "Segera Tayang");
+renderMovies("#coming-soon-movie-list", movieData.comingSoon, "Segera Tayang");

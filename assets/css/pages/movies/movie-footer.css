@@ -1,0 +1,78 @@
+/* Footer Section Styling */
+
+#footer-container {
+    bottom: 0;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    padding: 1em;
+}
+
+#footer-container .logo {
+    color: var(--color-on-primary);
+}
+
+#social-media-container {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 1.5em 0 .8em;
+    gap: .6em;
+}
+
+.social-media-button {
+    font-size: 1.2em;
+    color: var(--color-accent);
+    background-color: transparent;
+    border: none;
+}
+
+#footer-menu-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .8em;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 1em;
+}
+
+#footer-menu-container > a {
+    color: var(--color-on-primary);
+    text-decoration: none;
+}
+
+#footer-menu-container > a:hover {
+    color: var(--color-accent);
+}
+
+#copyright {
+    margin-top: 1.2em;
+    color: var(--color-primary-soft);
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+}
+
+
+@media(min-width: 768px) {
+    #footer-container .logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    #social-media-container {
+        font-size: 1.5em;
+        justify-content: center;
+    }
+
+    #footer-menu-container {
+        flex-flow: row nowrap;
+        justify-content: center;
+    }
+
+    #copyright {
+        display: flex;
+        justify-content: center;
+    }
+}
+
