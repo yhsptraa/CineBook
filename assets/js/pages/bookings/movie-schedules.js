@@ -1,21 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    let selectedMovie = dashboardData?.trending?.[0] || {};
-    document.getElementById("movie-title").innerText = selectedMovie.title;
-    document.getElementById("movie-genre").innerText = `${selectedMovie.rating || "R"} • ${selectedMovie.duration || "2 jam"}`;
-    let price = 50000;
+    document.getElementById("back-button").onclick = () => {
+    window.history.back();
+    };
+    const query = new URLSearchParams(window.location.search);
+    const movieId = query.get("id");
+    const dataSource = typeof movieData !== "undefined" ? movieData : dashboardData;
+    const allMovies = [
+        ...(dataSource?.trending || []),
+        ...(dataSource?.nowPlaying || []),
+        ...(dataSource?.comingSoon || [])
+    ];
+    const selectedMovie = allMovies.find(movie => movie.id == movieId) || allMovies[0] || {};
+    document.getElementById("movie-title").innerText = selectedMovie.title || "Film Tidak Ditemukan";
+    document.getElementById("movie-genre").innerText = `${selectedMovie.rating || "R13+"} • ${selectedMovie.duration || "120 min"}`;
+    const price = selectedMovie.price || 50000;
     document.getElementById("movie-price").innerText = "Rp " + price.toLocaleString("id-ID");
     if (selectedMovie.poster) {
         document.getElementById("movie-poster").src = "../../../" + selectedMovie.poster.replace("../../../", "");
     }
 
     const dates = ["4 Okt", "5 Okt", "6 Okt", "7 Okt"];
-
+    const assignedStudio = selectedMovie.studio || `Studio ${((selectedMovie.id - 1) % 6) + 1}`;
     const showtimes = [
-        { time: "09:00", studio: "Studio 1" },
-        { time: "13:00", studio: "Studio 1" },
-        { time: "16:00", studio: "Studio 1" },
-        { time: "19:00", studio: "Studio 1" }
+        { time: "09:00", studio: assignedStudio },
+        { time: "13:00", studio: assignedStudio },
+        { time: "16:00", studio: assignedStudio },
+        { time: "19:00", studio: assignedStudio }
     ];
 
     let selectedDate = "";
@@ -63,14 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTimes();
     btnNext.onclick = () => {
         const bookingData = {
-            movieTitle: selectedMovie.title,
+            movieId: selectedMovie.id,
+            movieTitle: selectedMovie.title || "Untitled",
             moviePrice: price,
-            moviePoster: selectedMovie.poster,
+            moviePoster: selectedMovie.poster || "",
             date: selectedDate,
-            studio: selectedTime.studio, 
+            studio: selectedTime.studio,
             time: selectedTime.time
         };
         localStorage.setItem("cinebook_booking", JSON.stringify(bookingData));
-        window.location.href = "movie-seats.html";
+        window.location.href = `movie-seats.html?id=${selectedMovie.id}`;
     };
 });
