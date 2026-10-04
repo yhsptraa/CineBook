@@ -1,0 +1,133 @@
+#header-container {
+    background-color: var(--color-surface);
+    padding: 15px 30px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+#navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#main-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+    background-color: var(--color-background);
+}
+
+.schedule-section {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.movie-summary-card {
+    display: flex;
+    gap: 15px;
+    background-color: var(--color-surface-muted);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.movie-summary-card img {
+    width: 70px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.movie-info h3 {
+    font-size: 1.1rem;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+}
+
+.movie-genre {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+}
+
+.movie-price {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.option-group {
+    margin-bottom: 20px;
+}
+
+.option-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: 10px;
+}
+
+.button-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.opt-btn {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.opt-btn:hover {
+    background-color: var(--color-primary-soft);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.opt-btn.selected {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.submit-btn:disabled {
+    background-color: var(--color-text-disabled);
+    color: var(--color-on-primary);
+    cursor: not-allowed;
+}

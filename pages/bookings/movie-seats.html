@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CineBook - Select Seats</title>
+        <link rel="stylesheet" href="../../../assets/css/base/reset.css">
+        <link rel="stylesheet" href="../../../assets/css/base/root.css">
+        <link rel="stylesheet" href="../../../assets/css/pages/bookings/movie-seats.css">
+    </head>
+    <body>
+        <header id="header-container">
+            <nav id="navbar-container">
+                <a class="logo" href="movie-schedules.html">Kembali</a>
+            </nav>
+        </header>
+        <main id="main-container">
+            <section class="seats-section">
+                <h2 class="page-title">Pilih kursi yang tersedia</h2>
+                <div class="booking-summary-bar">
+                    <div>
+                        <h3 id="summary-title">...</h3>
+                        <p id="summary-info">-</p>
+                    </div>
+                    <div class="price-info">
+                        <p>Total: <span id="summary-total-price">Rp 0</span></p>
+                    </div>
+                </div>
+                <div class="screen-container">
+                    <div class="screen">LAYAR</div>
+                </div>
+                <div class="seats-grid" id="seats-grid"></div>
+                <div class="seat-legend">
+                    <div class="legend-item"><span class="seat-demo available"></span> Tersedia</div>
+                    <div class="legend-item"><span class="seat-demo selected"></span> Dipilih</div>
+                    <div class="legend-item"><span class="seat-demo occupied"></span> Terisi</div>
+                </div>
+                <button id="next-checkout-btn" class="submit-btn" disabled>
+                    Lanjut ke pembayaran <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </section>
+        </main>
+        <script src="../../../assets/js/pages/bookings/movie-seats.js"></script>
+    </body>
+</html>
