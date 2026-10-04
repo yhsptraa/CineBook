@@ -199,8 +199,8 @@
     margin-bottom: 15px;
 }
 
-.badge-unpaid {
-    background-color: var(--color-accent);
+.badge-paid {
+    background-color: #15803d;
     color: var(--color-on-primary);
     font-weight: bold;
     padding: 2px 8px;
