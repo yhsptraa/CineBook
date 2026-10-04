@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const bookingData = JSON.parse(localStorage.getItem("cinebook_booking")) 
+    const bookingData = JSON.parse(localStorage.getItem("cinebook_booking") || "null");
+    if (!bookingData) {
+        alert("Data jadwal tidak ditemukan. Silakan pilih film dan jadwal kembali.");
+        window.location.href = "../../index.html";
+        return;
+    }
+
     document.getElementById("summary-title").innerText = bookingData.movieTitle;
     document.getElementById("summary-info").innerText = `${bookingData.studio} • ${bookingData.date} • ${bookingData.time}`;
     const seatsGrid = document.getElementById("seats-grid");
