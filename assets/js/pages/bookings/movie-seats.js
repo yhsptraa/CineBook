@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const bookingData = JSON.parse(localStorage.getItem("cinebook_booking")) 
+    const bookingData = JSON.parse(localStorage.getItem("cinebook_booking") || "null");
+    if (!bookingData) {
+        alert("Schedule data not found. Please select a movie and schedule again");
+        window.location.href = "../../index.html";
+        return;
+    }
+
     document.getElementById("summary-title").innerText = bookingData.movieTitle;
     document.getElementById("summary-info").innerText = `${bookingData.studio} • ${bookingData.date} • ${bookingData.time}`;
     const seatsGrid = document.getElementById("seats-grid");

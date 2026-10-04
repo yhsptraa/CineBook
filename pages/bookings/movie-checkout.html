@@ -4,46 +4,46 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CineBook - Checkout</title>
-        <link rel="stylesheet" href="../../../assets/css/base/reset.css">
-        <link rel="stylesheet" href="../../../assets/css/base/root.css">
-        <link rel="stylesheet" href="../../../assets/css/pages/bookings/movie-checkout.css">
+        <link rel="stylesheet" href="/assets/css/base/reset.css">
+        <link rel="stylesheet" href="/assets/css/base/root.css">
+        <link rel="stylesheet" href="/assets/css/pages/bookings/movie-checkout.css">
     </head>
     <body>
         <header id="header-container">
             <nav id="navbar-container">
-                <a class="logo" href="../../index.html">CineBook</a>
+                <a class="logo" href="/index.html">Back</a>
             </nav>
         </header>
         <main id="main-container">
             <section class="checkout-card">
                 <div class="checkout-header">
-                    <h2 class="page-title">Checkout pesanan</h2>
+                    <h2 class="page-title">Checkout booking</h2>
                 </div>
                 <div class="movie-summary">
                     <img id="checkout-poster" src="" alt="Poster" class="poster-img">
                     <div class="movie-info">
                         <h3 id="checkout-title">...</h3>
                         <p id="checkout-schedule">-</p>
-                        <p id="checkout-seats">Kursi: </p>
+                        <p id="checkout-seats">Seats: </p>
                     </div>
                 </div>
                 <hr class="divider">
                 <div class="price-details">
                     <div class="price-row">
-                        <span>Harga tiket (<span id="ticket-count">0</span>x)</span>
+                        <span>Ticket price (<span id="ticket-count">0</span>x)</span>
                         <span id="subtotal-price">Rp 0</span>
                     </div>
                     <div class="price-row">
-                        <span>Biaya layanan</span>
+                        <span>Service fee</span>
                         <span id="service-fee">Rp 5.000</span>
                     </div>
                     <div class="price-row total-row">
-                        <span>Total pembayaran</span>
+                        <span>Total payment</span>
                         <span id="grand-total">Rp 0</span>
                     </div>
                 </div>
                 <div class="payment-method-section">
-                    <h4>Metode pembayaran</h4>
+                    <h4>Payment method</h4>
                     <div class="payment-options">
                         <label class="payment-item">
                             <input type="radio" name="payment" value="QRIS" checked>
@@ -56,19 +56,19 @@
                     </div>
                 </div>
                 <button id="pay-button" class="pay-btn">
-                    Bayar sekarang <i class="fa-solid fa-lock"></i>
+                    Payment confirmation <i class="fa-solid fa-lock"></i>
                 </button>
             </section>
         </main>
         <div id="booking-modal" class="modal-overlay" style="display: none;">
             <div class="modal-content">
                 <i class="fa-solid fa-circle-check modal-icon"></i>
-                <h3>Pesanan berhasil dibuat</h3>
-                <p>Status pesanan: <span class="badge-unpaid">Belum lunas</span></p>
-                <p class="modal-desc">Silakan selesaikan pembayaran sesuai metode yang dipilih</p>
-                <button id="close-modal-btn" class="modal-btn">Oke</button>
+                <h3>Payment successful</h3>
+                <p>Transaction status: <span class="badge-paid">Paid off</span></p>
+                <p class="modal-desc">The transaction has been saved to your purchase history</p>
+                <button id="close-modal-btn" class="modal-btn">View transaction history</button>
             </div>
         </div>
-        <script src="../../../assets/js/pages/bookings/movie-checkout.js"></script>
+        <script src="/assets/js/pages/bookings/movie-checkout.js"></script>
     </body>
 </html>

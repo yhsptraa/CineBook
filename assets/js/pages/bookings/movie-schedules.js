@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ...(dataSource?.comingSoon || [])
     ];
     const selectedMovie = allMovies.find(movie => movie.id == movieId) || allMovies[0] || {};
-    document.getElementById("movie-title").innerText = selectedMovie.title || "Film Tidak Ditemukan";
+    document.getElementById("movie-title").innerText = selectedMovie.title || "Movie not found";
     document.getElementById("movie-genre").innerText = `${selectedMovie.rating || "R13+"} • ${selectedMovie.duration || "120 min"}`;
     const price = selectedMovie.price || 50000;
     document.getElementById("movie-price").innerText = "Rp " + price.toLocaleString("id-ID");
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("movie-poster").src = "../../../" + selectedMovie.poster.replace("../../../", "");
     }
 
-    const dates = ["4 Okt", "5 Okt", "6 Okt", "7 Okt"];
+    const dates = ["5 Oct", "6 Oct", "7 Oct", "8 Oct"];
     const assignedStudio = selectedMovie.studio || `Studio ${((selectedMovie.id - 1) % 6) + 1}`;
     const showtimes = [
         { time: "09:00", studio: assignedStudio },

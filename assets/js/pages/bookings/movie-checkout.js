@@ -1,10 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const bookingData = JSON.parse(localStorage.getItem("cinebook_booking"));
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    const currentUserId = sessionStorage.getItem("currentUserId");
+    const bookingData = JSON.parse(localStorage.getItem("cinebook_booking") || "null");
+    if (isLoggedIn !== "true" || !currentUserId) {
+        alert("Please log in before completing your booking");
+        window.location.href = "../login.html";
+        return;
+    }
+    if (!bookingData || !Array.isArray(bookingData.seats) || bookingData.seats.length === 0) {
+        alert("Booking data not found. Please select the movie and seats again");
+        window.location.href = "../../index.html";
+        return;
+    }
     document.getElementById("checkout-title").innerText = bookingData.movieTitle;
     document.getElementById("checkout-schedule").innerText = `${bookingData.studio} • ${bookingData.date} • ${bookingData.time}`;
-    document.getElementById("checkout-seats").innerText = `Kursi: ${bookingData.seats.join(", ")}`;
+    document.getElementById("checkout-seats").innerText = `Seats: ${bookingData.seats.join(", ")}`;
     if (bookingData.moviePoster) {
-        document.getElementById("checkout-poster").src = "../../../" + bookingData.moviePoster.replace("../../../", "");
+        document.getElementById("checkout-poster").src = "../../" + bookingData.moviePoster.replace(/^(\.\.\/)+/, "");
     }
 
     const serviceFee = 5000;
@@ -14,29 +26,53 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("ticket-count").innerText = count;
     document.getElementById("subtotal-price").innerText = "Rp " + subtotal.toLocaleString("id-ID");
     document.getElementById("grand-total").innerText = "Rp " + grandTotal.toLocaleString("id-ID");
-
     const payBtn = document.getElementById("pay-button");
     const modal = document.getElementById("booking-modal");
     const closeModalBtn = document.getElementById("close-modal-btn");
+    let transactionSaved = false;
 
     payBtn.onclick = () => {
+        if (transactionSaved) return;
         const selectedPayment = document.querySelector('input[name="payment"]:checked')?.value || "QRIS";
-        const finalBookingRecord = {
-            ...bookingData,
+        const transactionTime = new Date().toISOString();
+        const transaction = {
+            id: `TRX-CB-${Date.now()}`,
+            userId: currentUserId,
+            movieId: bookingData.movieId ?? null,
+            movieTitle: bookingData.movieTitle,
+            moviePoster: bookingData.moviePoster,
+            cinema: bookingData.cinema || "CineBook Central",
+            studio: bookingData.studio,
+            date: bookingData.date,
+            time: bookingData.time,
+            seats: bookingData.seats,
+            ticketPrice: bookingData.moviePrice,
+            subtotal,
+            serviceFee,
             paymentMethod: selectedPayment,
-            grandTotal: grandTotal,
-            status: "Belum lunas",
-            createdAt: new Date().toISOString()
+            grandTotal,
+            status: "PAID",
+            createdAt: transactionTime,
+            paidAt: transactionTime
         };
-        localStorage.setItem("cinebook_latest_booking", JSON.stringify(finalBookingRecord));
+
+        let transactions = [];
+        try {
+            const storedTransactions = JSON.parse(localStorage.getItem("cinebook_transactions") || "[]");
+            transactions = Array.isArray(storedTransactions) ? storedTransactions : [];
+        } catch (error) {
+            transactions = [];
+        }
+
+        transactions.push(transaction);
+        localStorage.setItem("cinebook_transactions", JSON.stringify(transactions));
+        localStorage.removeItem("cinebook_booking");
+        transactionSaved = true;
+        payBtn.disabled = true;
+        payBtn.innerText = "Payment successful";
         modal.style.display = "flex";
     };
-
     closeModalBtn.onclick = () => {
-        localStorage.removeItem("cinebook_booking");
-        modal.style.display = "none";
-        payBtn.disabled = true;
-        payBtn.innerText = "Pesanan berhasil dibuat";
-        window.location.replace("../../index.html");
+        window.location.href = "../movies/transaction-history.html";
     };
 });
