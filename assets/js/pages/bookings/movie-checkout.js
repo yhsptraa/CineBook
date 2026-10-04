@@ -37,6 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.style.display = "none";
         payBtn.disabled = true;
         payBtn.innerText = "Pesanan berhasil dibuat";
-        // TODO: Navigasi ke riwayat transaksi
+        window.location.replace("../../index.html");
     };
 });

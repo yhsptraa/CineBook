@@ -20,11 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const dates = ["4 Okt", "5 Okt", "6 Okt", "7 Okt"];
+    const assignedStudio = selectedMovie.studio || `Studio ${((selectedMovie.id - 1) % 6) + 1}`;
     const showtimes = [
-        { time: "09:00", studio: "Studio 1" },
-        { time: "13:00", studio: "Studio 1" },
-        { time: "16:00", studio: "Studio 1" },
-        { time: "19:00", studio: "Studio 1" }
+        { time: "09:00", studio: assignedStudio },
+        { time: "13:00", studio: assignedStudio },
+        { time: "16:00", studio: assignedStudio },
+        { time: "19:00", studio: assignedStudio }
     ];
 
     let selectedDate = "";
