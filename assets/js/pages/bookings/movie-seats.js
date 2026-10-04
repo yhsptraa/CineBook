@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const bookingData = JSON.parse(localStorage.getItem("cinebook_booking") || "null");
     if (!bookingData) {
-        alert("Data jadwal tidak ditemukan. Silakan pilih film dan jadwal kembali.");
+        alert("Schedule data not found. Please select a movie and schedule again");
         window.location.href = "../../index.html";
         return;
     }

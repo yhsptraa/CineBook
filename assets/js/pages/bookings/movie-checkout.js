@@ -3,18 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentUserId = sessionStorage.getItem("currentUserId");
     const bookingData = JSON.parse(localStorage.getItem("cinebook_booking") || "null");
     if (isLoggedIn !== "true" || !currentUserId) {
-        alert("Silakan login sebelum menyelesaikan booking.");
+        alert("Please log in before completing your booking");
         window.location.href = "../login.html";
         return;
     }
     if (!bookingData || !Array.isArray(bookingData.seats) || bookingData.seats.length === 0) {
-        alert("Data booking tidak ditemukan. Silakan pilih film dan kursi kembali.");
+        alert("Booking data not found. Please select the movie and seats again");
         window.location.href = "../../index.html";
         return;
     }
     document.getElementById("checkout-title").innerText = bookingData.movieTitle;
     document.getElementById("checkout-schedule").innerText = `${bookingData.studio} • ${bookingData.date} • ${bookingData.time}`;
-    document.getElementById("checkout-seats").innerText = `Kursi: ${bookingData.seats.join(", ")}`;
+    document.getElementById("checkout-seats").innerText = `Seats: ${bookingData.seats.join(", ")}`;
     if (bookingData.moviePoster) {
         document.getElementById("checkout-poster").src = "../../" + bookingData.moviePoster.replace(/^(\.\.\/)+/, "");
     }
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.removeItem("cinebook_booking");
         transactionSaved = true;
         payBtn.disabled = true;
-        payBtn.innerText = "Pembayaran berhasil";
+        payBtn.innerText = "Payment successful";
         modal.style.display = "flex";
     };
     closeModalBtn.onclick = () => {

@@ -11,39 +11,39 @@
     <body>
         <header id="header-container">
             <nav id="navbar-container">
-                <a class="logo" href="/index.html">Kembali</a>
+                <a class="logo" href="/index.html">Back</a>
             </nav>
         </header>
         <main id="main-container">
             <section class="checkout-card">
                 <div class="checkout-header">
-                    <h2 class="page-title">Checkout pesanan</h2>
+                    <h2 class="page-title">Checkout booking</h2>
                 </div>
                 <div class="movie-summary">
                     <img id="checkout-poster" src="" alt="Poster" class="poster-img">
                     <div class="movie-info">
                         <h3 id="checkout-title">...</h3>
                         <p id="checkout-schedule">-</p>
-                        <p id="checkout-seats">Kursi: </p>
+                        <p id="checkout-seats">Seats: </p>
                     </div>
                 </div>
                 <hr class="divider">
                 <div class="price-details">
                     <div class="price-row">
-                        <span>Harga tiket (<span id="ticket-count">0</span>x)</span>
+                        <span>Ticket price (<span id="ticket-count">0</span>x)</span>
                         <span id="subtotal-price">Rp 0</span>
                     </div>
                     <div class="price-row">
-                        <span>Biaya layanan</span>
+                        <span>Service fee</span>
                         <span id="service-fee">Rp 5.000</span>
                     </div>
                     <div class="price-row total-row">
-                        <span>Total pembayaran</span>
+                        <span>Total payment</span>
                         <span id="grand-total">Rp 0</span>
                     </div>
                 </div>
                 <div class="payment-method-section">
-                    <h4>Metode pembayaran</h4>
+                    <h4>Payment method</h4>
                     <div class="payment-options">
                         <label class="payment-item">
                             <input type="radio" name="payment" value="QRIS" checked>
@@ -56,17 +56,17 @@
                     </div>
                 </div>
                 <button id="pay-button" class="pay-btn">
-                    Konfirmasi pembayaran <i class="fa-solid fa-lock"></i>
+                    Payment confirmation <i class="fa-solid fa-lock"></i>
                 </button>
             </section>
         </main>
         <div id="booking-modal" class="modal-overlay" style="display: none;">
             <div class="modal-content">
                 <i class="fa-solid fa-circle-check modal-icon"></i>
-                <h3>Pembayaran berhasil</h3>
-                <p>Status pesanan: <span class="badge-paid">Lunas</span></p>
-                <p class="modal-desc">Transaksi telah disimpan ke riwayat pembelian Anda.</p>
-                <button id="close-modal-btn" class="modal-btn">Lihat riwayat transaksi</button>
+                <h3>Payment successful</h3>
+                <p>Transaction status: <span class="badge-paid">Paid off</span></p>
+                <p class="modal-desc">The transaction has been saved to your purchase history</p>
+                <button id="close-modal-btn" class="modal-btn">View transaction history</button>
             </div>
         </div>
         <script src="/assets/js/pages/bookings/movie-checkout.js"></script>
