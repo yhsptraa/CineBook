@@ -32,7 +32,7 @@ if (!selectedMovie) {
                 ${selectedMovie.duration ? `<span>${selectedMovie.duration}</span>` : ""}
             </div>
             <div class="schedule-button">
-                <a href="#" class="button-link">Buy Ticket</a>
+                <a href="../bookings/movie-schedules.html?id=${selectedMovie.id}" class="button-link">Buy Ticket</a>
             </div>
             <p class="synopsis">${selectedMovie.synopsis}</p>
     `
