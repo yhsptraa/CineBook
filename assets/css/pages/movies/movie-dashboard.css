@@ -162,4 +162,18 @@
     .movie-card {
         flex: 0 0 22em;
     }
+
+    #trending-title,
+    #now-playing-title,
+    #coming-soon-title {
+        font-size: 1.75em;
+    }
+
+    .movie-title {
+        font-size: 1.25em;
+    }
+
+    .movie-information span {
+        font-size: 1em;
+    }
 }
