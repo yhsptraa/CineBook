@@ -30,10 +30,12 @@
     <div class="switch-page">Belum punya akun? <a href="user/register.html">Daftar Sekarang</a></div>
     
     <div style="margin-top: 20px; font-size: 11px; color: #9ca3af; text-align: center; border-top: 1px dashed #e5e7eb; padding-top: 10px;">
-        Akun Demo: sabil@cinebook.com | Pas: cinema2026
+        Akun Demo: test_user@gmail.com | Password: 12345678
     </div>
 </div>
 
+<script src="../assets/js/data/users-dummy.js"></script>
+<script src="../assets/js/data/booking-dummy.js"></script>
 <script>
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -42,28 +44,18 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     const errorBox = document.getElementById('error-box');
     errorBox.style.display = 'none';
 
-    
-    if (email === 'admin@cinebook.com' && password === 'cinema2026') {
-        sessionStorage.setItem('isLoggedIn', 'true');
-        sessionStorage.setItem('userNama', 'Admin CineBook');
-        sessionStorage.setItem('userEmail', 'admin@cinebook.com');
-        
-        
-        if (window.top !== window.self) {
-            window.top.location.href = '../index.html';
-        } else {
-            window.location.href = '../index.html';
-        }
-        return;
-    }
-
-    
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find(u => u.email === email && u.password === password);
+    const registeredUsers = JSON.parse(localStorage.getItem('users') || '[]');
+    const dummyUser = userData.find(user => user.email === email && user.password === password);
+    const registeredUser = registeredUsers.find(user => user.email === email && user.password === password);
+    const user = dummyUser || registeredUser;
 
     if (user) {
+        const userId = user.id ?? `registered-${user.email}`;
+        const userName = user.name || user.nama;
+
         sessionStorage.setItem('isLoggedIn', 'true');
-        sessionStorage.setItem('userNama', user.nama);
+        sessionStorage.setItem('currentUserId', String(userId));
+        sessionStorage.setItem('userNama', userName);
         sessionStorage.setItem('userEmail', user.email);
         
         if (window.top !== window.self) {

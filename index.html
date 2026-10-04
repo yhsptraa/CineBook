@@ -26,9 +26,9 @@
                     </button>
                 </div>
                 <div id="menu-container">
-                    <a href="#" class="menu">NOW PLAYING</a>
-                    <a href="#" class="menu">COMING SOON</a>
-                    <a href="#" class="menu">CINEMAS</a>
+                    <a href="#now-playing-title" class="menu">NOW PLAYING</a>
+                    <a href="#coming-soon-title" class="menu">COMING SOON</a>
+                    <a href="./pages/movies/transaction-history.html" class="menu">HISTORY</a>
                 </div>
                 <div id="search-container">
                     <button id="search-button">
@@ -51,30 +51,28 @@
     <main id="main-container">
         <section id="main-menu-container">
             <div class="button-container">
-                <button class="main-menu-button" type="button">
+                <a class="main-menu-button" href="pages/cinemas/cinema.html" aria-label="Lihat bioskop">
                     <i class="fa-solid fa-film"></i>
-                </button>
+                </a>
                 <p class="menu-description">Cinema</p>
             </div>
             <div class="button-container">
-                <button class="main-menu-button" type="button">
+                <a class="main-menu-button" href="#now-playing-title" aria-label="Lihat film yang sedang tayang">
                     <i class="fa-solid fa-ticket"></i>
-                </button>
+                </a>
                 <p class="menu-description">Film</p>
             </div>
             <div class="button-container">
-                <button class="main-menu-button" type="button">
+                <a class="main-menu-button" href="pages/food/food.html" aria-label="Lihat menu makanan">
                     <i class="fa-solid fa-pizza-slice"></i>
-                </button>
+                </a>
                 <p class="menu-description">Food</p>
             </div>
             <div class="button-container">
-                <a href="pages/user/profile.html" style="text-decoration: none; color: inherit; text-align: center;">
-                <button class="main-menu-button" type="button">
+                <a class="main-menu-button" href="pages/user/profile.html" aria-label="Buka profil pengguna">
                     <i class="fa-solid fa-user"></i>
-                </button>
-                <p class="menu-description">User </p>
                 </a>
+                <p class="menu-description">User </p>
             </div>
         </section>
         <section class="content-section">
@@ -141,14 +139,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (isLoggedIn === 'true' && userNama) {
         authContainer.innerHTML = `
-            <span style="color: #8b1e3f; font-weight: bold; margin-right: 15px; font-family: sans-serif;">HI, ${userNama.toUpperCase()}</span>
-            <a href="#" id="logout-btn" style="color: #ef4444; font-weight: bold; text-decoration: none;">LOGOUT</a>
+            <span class="user-greeting">HI, ${userNama.toUpperCase()}</span>
+            <a href="#" id="logout-btn">LOGOUT</a>
         `;
         
         document.getElementById('logout-btn').addEventListener('click', function(e) {
             e.preventDefault();
             sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('currentUserId');
             sessionStorage.removeItem('userNama');
+            sessionStorage.removeItem('userEmail');
             window.location.reload();
         });
     }
