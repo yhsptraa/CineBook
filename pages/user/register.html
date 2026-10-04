@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - CineBook</title>
+     
+    <link rel="stylesheet" href="../../assets/css/pages/movies/auth.css">
+</head>
+<body>
+<div class="login-container">
+    <div class="brand-title">CineBook</div>
+    <div class="brand-subtitle">Buat akun baru untuk mulai memesan tiket</div>
+    
+    <div id="error-box" class="error-box" style="display: none;"></div>
+    <div id="success-box" style="display: none; background-color: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981; padding: 12px; border-radius: 6px; margin-bottom: 20px; font-size: 14px; text-align: center;">
+        Registrasi berhasil! <br>
+        <a href="../login.html" style="color: #8b1e3f; font-weight: 600; text-decoration: none;">Silakan login di sini</a>
+    </div>
+
+    <form id="registerForm">
+        <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Alamat Email</label>
+            <input type="email" id="email" placeholder="Masukkan email Anda" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Minimal 8 karakter" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm">Konfirmasi Password</label>
+            <input type="password" id="confirm" placeholder="Ulangi password" required>
+        </div>
+        <button type="submit" class="btn-login">DAFTAR SEKARANG</button>
+    </form>
+    <div class="switch-page">Sudah punya akun? <a href="../login.html">Masuk di sini</a></div>
+</div>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nama = document.getElementById('nama').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirm = document.getElementById('confirm').value;
+    const errorBox = document.getElementById('error-box');
+    const successBox = document.getElementById('success-box');
+    
+    errorBox.style.display = 'none';
+    
+    if (password.length < 8) {
+        errorBox.innerText = "• Password minimal 8 karakter";
+        errorBox.style.display = 'block';
+        return;
+    }
+    if (password !== confirm) {
+        errorBox.innerText = "• Konfirmasi password tidak cocok";
+        errorBox.style.display = 'block';
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const isEmailExist = users.some(user => user.email === email);
+    if (isEmailExist) {
+        errorBox.innerText = "• Email sudah terdaftar!";
+        errorBox.style.display = 'block';
+        return;
+    }
+
+    users.push({ nama, email, password });
+    localStorage.setItem('users', JSON.stringify(users));
+
+    document.getElementById('registerForm').style.display = 'none';
+    successBox.style.display = 'block';
+});
+</script>
+</body>
+</html>

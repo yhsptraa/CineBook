@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - CineBook</title>
+    
+    <link rel="stylesheet" href="../../assets/css/pages/movies/auth.css">
+</head>
+<body>
+<div class="login-container" style="max-width: 500px;">
+    <div class="brand-title">Profil <span>Pengguna</span></div>
+    <div class="brand-subtitle">Informasi detail akun CineBook Anda</div>
+
+    
+    <div style="margin-bottom: 20px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px;">
+        <p style="font-size: 13px; color: #6b7280; margin-bottom: 4px;">Nama Lengkap</p>
+        <h3 id="profile-name" style="font-size: 18px; color: #111827; font-weight: 600;">-</h3>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <p style="font-size: 13px; color: #6b7280; margin-bottom: 4px;">Alamat Email</p>
+        <h3 id="profile-email" style="font-size: 16px; color: #111827; font-weight: 500;">-</h3>
+    </div>
+
+    
+    <button id="btn-back" class="btn-login" style="margin-bottom: 10px;">Kembali ke Dashboard</button>
+    <button id="btn-logout" class="btn-login" style="background-color: #ef4444; color: white;">Keluar dari Akun</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    const userNama = sessionStorage.getItem('userNama');
+    const userEmail = sessionStorage.getItem('userEmail');
+
+    if (isLoggedIn !== 'true' || !userNama) {
+        alert("Akses ditolak! Silakan login terlebih dahulu.");
+        window.location.href = '../login.html';
+        return;
+    }
+ 
+    document.getElementById('profile-name').innerText = userNama;
+    document.getElementById('profile-email').innerText = userEmail || 'admin@cinebook.com';
+
+    
+    document.getElementById('btn-back').addEventListener('click', function() {
+        window.location.href = '../../index.html';
+    });
+
+    
+    document.getElementById('btn-logout').addEventListener('click', function() {
+        sessionStorage.clear();
+        window.location.href = '../login.html';
+    });
+});
+</script>
+</body>
+</html>
