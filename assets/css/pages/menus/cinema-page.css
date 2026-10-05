@@ -1,0 +1,127 @@
+body {
+    min-width: 0;
+}
+
+main {
+    min-height: 76vh;
+    padding: 3em 1em 5em;
+    background: linear-gradient(180deg, var(--color-surface-muted), var(--color-background) 24em);
+}
+
+h1 {
+    text-align: center;
+}
+
+.cinema-heading,
+.cinema-card {
+    width: min(100%, 68em);
+    margin-inline: auto;
+}
+
+.cinema-heading {
+    margin-bottom: .6em;
+    color: var(--color-text-primary);
+    font-family: var(--font-lora);
+    font-size: clamp(2em, 6vw, 3.5em);
+    line-height: 1.1;
+}
+
+.cinema-card {
+    display: grid;
+    grid-template-columns: minmax(20em, .95fr) minmax(0, 1.05fr);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 1.25em;
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+.cinema-poster {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 27em;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cinema-content {
+    align-self: center;
+    padding: clamp(1.5em, 5vw, 2.5em);
+}
+
+.cinema-content h2 {
+    color: var(--color-text-primary);
+    font-family: var(--font-lora);
+    font-size: 1.8em;
+}
+
+.cinema-address {
+    display: flex;
+    gap: .6em;
+    margin-top: 1em;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.cinema-address i {
+    margin-top: .2em;
+    color: var(--color-primary);
+}
+
+.cinema-information {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .75em;
+    margin-top: 1.5em;
+}
+
+.cinema-information > div {
+    padding: .9em;
+    border-radius: .65em;
+    background-color: var(--color-surface-muted);
+}
+
+.cinema-information span {
+    display: block;
+    margin-bottom: .3em;
+    color: var(--color-text-secondary);
+    font-size: .7em;
+}
+
+.cinema-information strong {
+    color: var(--color-text-primary);
+    font-size: .85em;
+}
+
+.primary-action {
+    display: inline-block;
+    margin-top: 2em;
+    padding: .8em 1em;
+    border-radius: .6em;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.primary-action:hover {
+    background-color: var(--color-primary-hover);
+}
+
+@media (max-width: 47.5em) {
+    .cinema-card {
+        grid-template-columns: 1fr;
+    }
+
+    .cinema-poster {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+    }
+}
+
+@media (max-width: 33.75em) {
+    .cinema-information {
+        grid-template-columns: 1fr;
+    }
+}
