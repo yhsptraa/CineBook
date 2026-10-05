@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const price = selectedMovie.price || 50000;
     document.getElementById("movie-price").innerText = "Rp " + price.toLocaleString("id-ID");
     if (selectedMovie.poster) {
-        document.getElementById("movie-poster").src = "../../../" + selectedMovie.poster.replace("../../../", "");
+        const cleanPosterPath = selectedMovie.poster.replace(/^(\.\.\/|\.\/)+/, "");
+        document.getElementById("movie-poster").src = "../../" + cleanPosterPath;
     }
 
     const dates = ["5 Oct", "6 Oct", "7 Oct", "8 Oct"];

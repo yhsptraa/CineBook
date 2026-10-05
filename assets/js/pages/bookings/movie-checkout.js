@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("checkout-schedule").innerText = `${bookingData.studio} • ${bookingData.date} • ${bookingData.time}`;
     document.getElementById("checkout-seats").innerText = `Seats: ${bookingData.seats.join(", ")}`;
     if (bookingData.moviePoster) {
-        document.getElementById("checkout-poster").src = "../../" + bookingData.moviePoster.replace(/^(\.\.\/)+/, "");
+        const cleanPosterPath = bookingData.moviePoster.replace(/^(\.\.\/|\.\/)+/, "");
+        document.getElementById("checkout-poster").src = "../../" + cleanPosterPath;
     }
 
     const serviceFee = 5000;
