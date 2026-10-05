@@ -17,12 +17,15 @@
 }
 
 .main-menu-button {
+    display: grid;
+    place-items: center;
     font-size: 2em;
     padding: .25em;
     border-radius: .5em;
     color: var(--color-primary);
     background-color: var(--color-primary-soft);
     border: 1px solid var(--color-primary);
+    text-decoration: none;
 }
 
 .main-menu-button:hover {

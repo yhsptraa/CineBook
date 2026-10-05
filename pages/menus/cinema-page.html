@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema - CineBook</title>
+    <link rel="stylesheet" href="../../assets/css/base/reset.css">
+    <link rel="stylesheet" href="../../assets/css/base/root.css">
+    <link rel="stylesheet" href="../../assets/css/pages/movies/movie-header.css">
+    <link rel="stylesheet" href="../../assets/css/pages/movies/movie-footer.css">
+    <link rel="stylesheet" href="../../assets/css/pages/menus/cinema-page.css">
+    <script src="https://kit.fontawesome.com/baa7ec279b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Dashboard Header Section -->
+    <header id="header-container">
+        <nav id="navbar-container">
+            <a class="logo" href="../../index.html">Cine<span class="logo-span">Book</span></a>
+            <div id="hamburger-menu-container">
+                <div id="close-button-container">
+                    <p class="logo">Cine<span class="logo-span">Book</span></p>
+                    <button id="close-button" type="button">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div id="menu-container">
+                    <a href="../../index.html#now-playing-title" class="menu">NOW PLAYING</a>
+                    <a href="../../index.html#coming-soon-title" class="menu">COMING SOON</a>
+                    <a href="../movies/transaction-history.html" class="menu">HISTORY</a>
+                </div>
+                <div id="search-container">
+                    <button id="search-button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" placeholder="Search" id="input-box">
+                </div>
+                <div id="auth-container">
+                    <a href="../login.html">LOGIN</a>
+                    <a href="../user/register.html">REGISTER</a>
+                </div>
+            </div>
+            <button id="hamburger-button" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+    <!-- Main Section -->
+    <main>
+        <h1 class="cinema-heading">Our Cinema</h1>
+
+        <section class="cinema-card" aria-labelledby="cinema-name">
+            <img src="../../assets/images/cinema/cinebook-central.png" alt="CineBook Central cinema interior" class="cinema-poster">
+
+            <div class="cinema-content">
+                <h2 id="cinema-name">CineBook Central</h2>
+                <p class="cinema-address">
+                    <i class="fa-solid fa-location-dot"></i>
+                    CineBook Central Mall, 3rd Floor, City Center
+                </p>
+
+                <div class="cinema-information">
+                    <div>
+                        <span>Operating Hours</span>
+                        <strong>09:00 - 23:00</strong>
+                    </div>
+                    <div>
+                        <span>Capacity</span>
+                        <strong>4 Studios</strong>
+                    </div>
+                    <div>
+                        <span>Format</span>
+                        <strong>2D, 3D</strong>
+                    </div>
+                </div>
+                <a class="primary-action" href="../../index.html">View Movies</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="footer-container">
+        <a class="logo" href="#">Cine<span class="logo-span">Book</span></a>
+        <div id="social-media-container">
+            <button id="instagram-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-instagram"></i>
+            </button>
+            <button id="tiktok-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-tiktok"></i>
+            </button>
+            <button id="youtube-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-youtube"></i>
+            </button>
+            <button id="twitter-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-x-twitter"></i>
+            </button>
+            <button id="facebook-button" class="social-media-button" type="button">
+                <i class="fa-brands fa-facebook"></i>
+            </button>
+        </div>
+        <div id="footer-menu-container">
+            <a href="#">About Us</a>
+            <a href="#">FAQ</a>
+            <a href="#">Privacy Management</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p id="copyright">&copy; 2026 Cinebook</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburgerButton = document.getElementById("hamburger-button");
+            const hamburgerMenuContainer = document.getElementById("hamburger-menu-container");
+            const closeButton = document.getElementById("close-button");
+            const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+            const userNama = sessionStorage.getItem("userNama");
+            const authContainer = document.getElementById("auth-container");
+
+            hamburgerButton.addEventListener("click", function() {
+                hamburgerMenuContainer.classList.toggle("active");
+            });
+
+            closeButton.addEventListener("click", function() {
+                hamburgerMenuContainer.classList.remove("active");
+            });
+
+            if (isLoggedIn === "true" && userNama) {
+                authContainer.innerHTML = `
+                    <span class="user-greeting">HI, ${userNama.toUpperCase()}</span>
+                    <a href="#" id="logout-btn">LOGOUT</a>
+                `;
+
+                document.getElementById("logout-btn").addEventListener("click", function(event) {
+                    event.preventDefault();
+                    sessionStorage.removeItem("isLoggedIn");
+                    sessionStorage.removeItem("currentUserId");
+                    sessionStorage.removeItem("userNama");
+                    sessionStorage.removeItem("userEmail");
+                    window.location.reload();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
