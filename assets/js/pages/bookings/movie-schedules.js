@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("movie-genre").innerText = `${selectedMovie.rating || "R13+"} • ${selectedMovie.duration || "120 min"}`;
     const price = selectedMovie.price || 50000;
     document.getElementById("movie-price").innerText = "Rp " + price.toLocaleString("id-ID");
+    let cleanedPosterPath = "";
     if (selectedMovie.poster) {
-        const cleanPosterPath = selectedMovie.poster.replace(/^(\.\.\/|\.\/)+/, "");
-        document.getElementById("movie-poster").src = "../../" + cleanPosterPath;
+        cleanedPosterPath = selectedMovie.poster.replace(/^(\.\.\/|\.\/)+/, "");
+        document.getElementById("movie-poster").src = "../../" + cleanedPosterPath;
     }
 
     const dates = ["5 Oct", "6 Oct", "7 Oct", "8 Oct"];
@@ -74,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
             movieId: selectedMovie.id,
             movieTitle: selectedMovie.title || "Untitled",
             moviePrice: price,
-            moviePoster: selectedMovie.poster || "",
+            moviePoster: cleanedPosterPath, 
             date: selectedDate,
             studio: selectedTime.studio,
             time: selectedTime.time
