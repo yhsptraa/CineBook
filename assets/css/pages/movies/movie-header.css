@@ -107,6 +107,24 @@
     color: var(--color-primary);
 }
 
+.user-greeting {
+    margin-right: 1em;
+    color: var(--color-primary);
+    font-family: var(--font-dm-sans);
+    font-weight: 700;
+}
+
+#auth-container > #logout-btn {
+    color: var(--color-primary);
+    font-family: var(--font-dm-sans);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#auth-container > #logout-btn:hover {
+    color: var(--color-primary-hover);
+}
+
 #search-container {
     display: none;
 }
