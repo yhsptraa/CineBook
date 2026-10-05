@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("back-button").onclick = () => {
-    window.history.back();
-    };
     const query = new URLSearchParams(window.location.search);
     const movieId = query.get("id");
     const dataSource = typeof movieData !== "undefined" ? movieData : dashboardData;
